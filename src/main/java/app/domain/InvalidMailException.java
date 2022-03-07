@@ -1,4 +1,4 @@
-package dev.carpena.usermanagement.domain;
+package app.domain;
 
 public class InvalidMailException extends Throwable {
     public InvalidMailException(String value) {

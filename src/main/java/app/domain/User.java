@@ -1,4 +1,4 @@
-package dev.carpena.usermanagement.domain;
+package app.domain;
 
 final public class User {
     final private UserId id;

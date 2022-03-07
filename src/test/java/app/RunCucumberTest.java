@@ -1,4 +1,4 @@
-package dev.carpena.usermanagement;
+package app;
 
 import org.junit.platform.suite.api.ConfigurationParameter;
 import org.junit.platform.suite.api.IncludeEngines;

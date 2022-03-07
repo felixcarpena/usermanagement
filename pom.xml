@@ -8,7 +8,7 @@
 		<version>2.6.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>dev.carpena</groupId>
+	<groupId>app</groupId>
 	<artifactId>usermanagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>usermanagement</name>

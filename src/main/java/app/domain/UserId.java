@@ -1,4 +1,4 @@
-package dev.carpena.usermanagement.domain;
+package app.domain;
 
 import java.util.UUID;
 

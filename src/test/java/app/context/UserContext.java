@@ -1,4 +1,4 @@
-package dev.carpena.usermanagement.context;
+package app.context;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.spring.CucumberContextConfiguration;

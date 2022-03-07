@@ -1,4 +1,4 @@
-package dev.carpena.usermanagement;
+package app;
 
 import org.springframework.boot.test.context.SpringBootTest;
 

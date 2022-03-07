@@ -1,4 +1,4 @@
-package dev.carpena.usermanagement.domain;
+package app.domain;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
