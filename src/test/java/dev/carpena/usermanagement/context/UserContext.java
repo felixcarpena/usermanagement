@@ -1,4 +1,4 @@
-package dev.carpena.usermanagement;
+package dev.carpena.usermanagement.context;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.spring.CucumberContextConfiguration;
@@ -11,11 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @CucumberContextConfiguration
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class UserSteps {
-    protected TestRestTemplate template;
+public class UserContext {
+    private final TestRestTemplate template;
 
     @Autowired
-    public UserSteps(TestRestTemplate testRestTemplate) {
+    public UserContext(TestRestTemplate testRestTemplate) {
         this.template = testRestTemplate;
     }
 
