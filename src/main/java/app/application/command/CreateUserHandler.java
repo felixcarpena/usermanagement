@@ -45,6 +45,7 @@ public class CreateUserHandler implements Handler<CreateUser> {
             //for the moment do nothing
             this.logger.error(e.getMessage());
         }
+
         return null;
     }
 }

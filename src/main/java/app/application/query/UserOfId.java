@@ -9,7 +9,7 @@ public class UserOfId implements Query {
         this.id = id;
     }
 
-    public String getId() {
+    public String id() {
         return id;
     }
 }
