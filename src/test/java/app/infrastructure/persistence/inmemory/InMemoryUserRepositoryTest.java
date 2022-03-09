@@ -14,7 +14,7 @@ class InMemoryUserRepositoryTest {
     @Test
     void it_should_persists_and_return_and_user() throws Throwable {
         UserId id = new UserId(UUID.randomUUID());
-        User user = new User(id, new Email("fancy@email.com"));
+        User user = User.create(id, new Email("fancy@email.com"));
         sut.save(user);
 
         assertEquals(user, sut.get(id));
@@ -24,7 +24,7 @@ class InMemoryUserRepositoryTest {
     void it_should_fails_if_user_not_found() throws Throwable {
         UserId id = new UserId(UUID.randomUUID());
         UserId anotherId = new UserId(UUID.randomUUID());
-        User user = new User(id, new Email("fancy@email.com"));
+        User user = User.create(id, new Email("fancy@email.com"));
         sut.save(user);
 
         Assertions.assertThrows(UserNotFoundException.class, () -> {

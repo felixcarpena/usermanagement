@@ -1,5 +1,6 @@
 package app.context;
 
+import app.domain.UserRepository;
 import io.cucumber.java.en.Given;
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserContext {
     private final TestRestTemplate template;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UserContext(TestRestTemplate testRestTemplate) {
+    public UserContext(TestRestTemplate testRestTemplate, UserRepository userRepository) {
         this.template = testRestTemplate;
+        this.userRepository = userRepository;
     }
 
     @Given("I subscribe a new user with {string} email")
