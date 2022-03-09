@@ -2,6 +2,7 @@ package shared.domain;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
 
 abstract public class EventSourceAggregateRoot {
     Integer version;
@@ -20,8 +21,15 @@ abstract public class EventSourceAggregateRoot {
             this.events.add(event);
             this.version++;
         } catch (Exception e) {
-            Exception hola = e;
             //do nothing for the moment
         }
+    }
+
+    protected void fromHistory(AggregateHistory history) {
+        history.events().forEach(this::recordThat);
+    }
+
+    public List<Event> events() {
+        return this.events;
     }
 }

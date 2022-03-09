@@ -1,6 +1,9 @@
 package app.infrastructure.persistence.inmemory;
 
-import app.domain.*;
+import app.domain.Email;
+import app.domain.User;
+import app.domain.UserId;
+import app.domain.UserNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

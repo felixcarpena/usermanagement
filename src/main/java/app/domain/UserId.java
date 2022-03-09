@@ -1,8 +1,10 @@
 package app.domain;
 
+import shared.domain.AggregateId;
+
 import java.util.UUID;
 
-final public class UserId {
+final public class UserId implements AggregateId {
     final private UUID id;
 
     public UserId(UUID id) {
