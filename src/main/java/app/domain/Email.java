@@ -24,4 +24,8 @@ final public class Email {
         return obj == this || this.value.equals(((Email) obj).value);
     }
 
+    @Override
+    public String toString() {
+        return this.value;
+    }
 }

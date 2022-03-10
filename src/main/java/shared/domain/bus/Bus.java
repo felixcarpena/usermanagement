@@ -6,7 +6,7 @@ import java.util.Optional;
 
 
 public interface Bus {
-    void subscribe(Handler<? super Message> handler);
+    void subscribe(Handler<Message> handler);
     void dispatch(Event event);
     void dispatch(Command command);
     Optional<Response> dispatch(Query query);

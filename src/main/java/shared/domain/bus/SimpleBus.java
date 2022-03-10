@@ -7,13 +7,14 @@ import java.util.*;
 
 @Service
 public class SimpleBus implements Bus {
-    private final Map<Class<? extends Message>, List<Handler<? super Message>>> handlers;
+    //I don't think using class is a good idea as a key of hashmap but I'll keep it for the moment
+    private final Map<Class<? extends Message>, List<Handler<Message>>> handlers;
 
     public SimpleBus() {
         this.handlers = new HashMap<>();
     }
 
-    public void subscribe(Handler<? super Message> handler) {
+    public void subscribe(Handler<Message> handler) {
         this.handlers.computeIfAbsent(handler.manage(), k -> new ArrayList<>());
         this.handlers.get(handler.manage()).add(handler);
     }

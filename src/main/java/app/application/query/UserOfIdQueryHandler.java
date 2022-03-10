@@ -5,7 +5,6 @@ import app.domain.view.UserView;
 import org.springframework.stereotype.Service;
 import shared.domain.bus.Handler;
 import shared.domain.bus.Message;
-import shared.domain.bus.Response;
 
 @Service
 @Subscriber
@@ -23,7 +22,7 @@ public class UserOfIdQueryHandler implements Handler<UserOfId> {
     }
 
     @Override
-    public Response handle(UserOfId query) {
+    public UserOfIdResponse handle(UserOfId query) {
         return this.userView.ofId(query.id()).map(UserOfIdResponse::new).orElse(null);
     }
 }

@@ -18,4 +18,9 @@ final public class UserId implements AggregateId {
 
         return obj == this || this.id == ((UserId) obj).id;
     }
+
+    @Override
+    public String toString() {
+        return this.id.toString();
+    }
 }
