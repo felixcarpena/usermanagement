@@ -6,8 +6,7 @@ import shared.domain.bus.Message;
 
 public interface Event extends Message {
     AggregateId id();
-
+    long version();
+    String type();
     JSONObject serialize() throws JSONException;
-
-    Event deserialize(JSONObject value) throws JSONException;
 }

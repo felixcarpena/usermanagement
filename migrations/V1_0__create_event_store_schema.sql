@@ -1,17 +1,11 @@
-CREATE TABLE event_store
+create table event_store
 (
-    id SERIAL PRIMARY KEY,
+    id SERIAL primary key,
     aggregate_id binary(16),
-    aggregate_id_text varchar(36) generated always as
-     (insert(
-        insert(
-          insert(
-            insert(hex(aggregate_id),9,0,'-'),
-            14,0,'-'),
-          19,0,'-'),
-        24,0,'-')
-     ) virtual,
-    version BIGINT NOT NULL,
-    data JSON NOT NULL,
-    UNIQUE (aggregate_id, version)
-)ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
+    aggregate_id_text varchar(36) generated always as (BIN_TO_UUID(aggregate_id)) virtual,
+    type varchar(191),
+    version bigint not null,
+    data json not null,
+    unique (aggregate_id, version),
+    index type_index ((json_value(data, '$.type' returning char(191))))
+)engine=InnoDB default charset=UTF8MB4;

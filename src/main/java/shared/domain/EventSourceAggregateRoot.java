@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 abstract public class EventSourceAggregateRoot {
-    Integer version;
+    protected Integer version;
     ArrayList<Event> events;
 
     protected EventSourceAggregateRoot() {
-        this.version = 0;
+        this.version = 1;
         this.events = new ArrayList<>();
     }
 

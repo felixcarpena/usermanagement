@@ -2,11 +2,11 @@ package shared.domain;
 
 import java.util.List;
 
-final public class AggregateHistory {
+public final class AggregateHistory {
     private final AggregateId id;
-    private final List<Event> events;
+    private final List<? extends Event> events;
 
-    public AggregateHistory(AggregateId id, List<Event> events) {
+    public AggregateHistory(AggregateId id, List<? extends Event> events) {
         this.id = id;
         this.events = events;
     }
@@ -15,7 +15,11 @@ final public class AggregateHistory {
         return id;
     }
 
-    public List<Event> events() {
+    public List<? extends Event> events() {
         return events;
+    }
+
+    public boolean isEmpty() {
+        return this.events.isEmpty();
     }
 }

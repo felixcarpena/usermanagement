@@ -36,12 +36,10 @@ public class CreateUserHandler implements Handler<CreateUser> {
         try {
             UserId userId = new UserId(UUID.fromString(command.userId()));
             Email email = new Email(command.email());
-            //ensure does not exists
-            this.userRepository.get(userId);
             User user = User.create(userId, email);
             this.userRepository.save(user);
             user.events().forEach(this.bus::dispatch);
-        } catch (UserNotFoundException | InvalidMailException e) {
+        } catch (InvalidMailException e) {
             //for the moment do nothing
             this.logger.error(e.getMessage());
         }

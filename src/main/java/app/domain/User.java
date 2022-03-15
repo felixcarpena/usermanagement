@@ -17,7 +17,7 @@ final public class User extends EventSourceAggregateRoot {
 
     public static User create(UserId id, Email email) {
         User user = new User();
-        user.recordThat(new UserWasCreated(id, email));
+        user.recordThat(new UserWasCreated(id, email, 1));
 
         return user;
     }
@@ -31,7 +31,7 @@ final public class User extends EventSourceAggregateRoot {
     }
 
     public void updateEmail(Email email) {
-        this.recordThat(new UserEmailWasUpdated(this.id, email));
+        this.recordThat(new UserEmailWasUpdated(this.id, email, this.version));
     }
 
     void apply(UserWasCreated event) {

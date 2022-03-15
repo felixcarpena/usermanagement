@@ -23,6 +23,8 @@ final public class EventStoreUserRepository implements UserRepository {
     @Override
     public User get(UserId userId) throws UserNotFoundException {
         AggregateHistory history = this.store.load(userId);
+        if (history.isEmpty())
+            throw new UserNotFoundException(userId);
 
         return new User(history);
     }
