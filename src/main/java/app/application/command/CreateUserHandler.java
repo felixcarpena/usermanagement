@@ -37,6 +37,13 @@ public class CreateUserHandler implements Handler<CreateUser> {
             UserId userId = new UserId(UUID.fromString(command.userId()));
             Email email = new Email(command.email());
             User user = User.create(userId, email);
+            try {
+                this.userRepository.get(userId);
+                this.logger.error("User already exist");
+                return null;
+            } catch (UserNotFoundException e) {
+                //is ok user does not exist
+            }
             this.userRepository.save(user);
             user.events().forEach(this.bus::dispatch);
         } catch (InvalidMailException e) {

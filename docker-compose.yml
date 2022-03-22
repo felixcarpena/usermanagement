@@ -1,16 +1,16 @@
 version: '3.3'
 services:
-  back:
-    container_name: usermanagement-back
-    image: openjdk:17
-    volumes:
-      - ./:/usermanagement
-    ports:
-      - "8080:8080"
-    links:
-      - db
-    working_dir: /usermanagement
-    command: ./mvnw spring-boot:run
+#  back:
+#    container_name: usermanagement-back
+#    image: openjdk:17
+#    volumes:
+#      - ./:/usermanagement
+#    ports:
+#      - "8080:8080"
+#    links:
+#      - db
+#    working_dir: /usermanagement
+#    command: ./mvnw spring-boot:run
   db:
     container_name: usermanagement-db
     image: mysql:8
