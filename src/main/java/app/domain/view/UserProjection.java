@@ -1,19 +1,20 @@
 package app.domain.view;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "user")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
 public class UserProjection {
-    private final String id;
-    private final String email;
-
-    public UserProjection(String id, String email) {
-        this.id = id;
-        this.email = email;
-    }
-
-    public String id() {
-        return id;
-    }
-
-    public String email() {
-        return email;
-    }
+    @Id
+    private String id;
+    private String email;
 }

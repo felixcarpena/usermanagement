@@ -14,7 +14,7 @@ public class UserProjectionSerializer extends JsonSerializer<UserProjection> {
     @Override
     public void serialize(UserProjection user, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
         //if I start an object it fails (check how to do this properly)
-        jsonGenerator.writeStringField("id", user.id());
-        jsonGenerator.writeStringField("email", user.email());
+        jsonGenerator.writeStringField("id", user.getId());
+        jsonGenerator.writeStringField("email", user.getEmail());
     }
 }

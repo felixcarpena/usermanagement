@@ -1,4 +1,4 @@
-package app.infrastructure.persistence;
+package shared.infrastructure.persistence;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +7,14 @@ import org.springframework.transaction.annotation.Transactional;
 import shared.domain.*;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 @Service
 public class MysqlEventStore implements EventStore {
+    @PersistenceContext
     private final EntityManager em;
     private final EventResolver eventResolver;
 

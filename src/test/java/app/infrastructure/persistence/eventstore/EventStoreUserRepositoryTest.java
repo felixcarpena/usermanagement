@@ -5,7 +5,7 @@ import app.domain.User;
 import app.domain.UserId;
 import app.domain.UserRepository;
 import app.infrastructure.eventstore.EventStoreUserRepository;
-import app.infrastructure.persistence.inmemory.InMemoryEventStore;
+import shared.infrastructure.persistence.InMemoryEventStore;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package app.infrastructure.persistence.inmemory;
+package shared.infrastructure.persistence;
 
 import org.springframework.stereotype.Service;
 import shared.domain.AggregateHistory;

@@ -8,7 +8,7 @@ import org.hibernate.annotations.TypeDef;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "event_store")
+@Table(name = "event_store", uniqueConstraints = { @UniqueConstraint(name = "aggregate_id_version", columnNames = { "aggregate_id", "version" }) })
 @TypeDef(name = "json", typeClass = JsonType.class)
 @NoArgsConstructor
 @AllArgsConstructor

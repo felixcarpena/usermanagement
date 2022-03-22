@@ -17,7 +17,7 @@ public class InMemoryUserView implements UserView {
 
     @Override
     public Optional<UserProjection> ofId(String id) {
-        return this.users.stream().filter(u -> u.id().compareTo(id) == 0).findFirst();
+        return this.users.stream().filter(u -> u.getId().compareTo(id) == 0).findFirst();
     }
 
     @Override
