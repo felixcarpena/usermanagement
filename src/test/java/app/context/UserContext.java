@@ -1,31 +1,34 @@
 package app.context;
 
-import app.domain.UserRepository;
+import app.application.command.CreateUser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
+import shared.domain.bus.Bus;
+
+import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@CucumberContextConfiguration
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserContext {
     private final TestRestTemplate template;
+    private final Bus bus;
     private ResponseEntity<String> response;
 
     @Autowired
-    public UserContext(TestRestTemplate testRestTemplate, UserRepository userRepository) {
+    public UserContext(TestRestTemplate testRestTemplate, Bus bus) {
         this.template = testRestTemplate;
+        this.bus = bus;
     }
 
     @Given("I send a post request to {string} with body:")
-    public void iSendARequestToWith(String path, String body){
+    public void iSendAPostRequestToWith(String path, String body) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(body, headers);
@@ -36,6 +39,12 @@ public class UserContext {
     public void theResponseStatusAndBodyShouldBe(int status, String body) throws JsonProcessingException {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.resolve(status));
         ObjectMapper mapper = new ObjectMapper();
-        assertThat(mapper.readTree(body)).isEqualTo(mapper.readTree(response.getBody()));
+        assertThat(mapper.readTree(response.getBody())).isEqualTo(mapper.readTree(body));
+    }
+
+    @Given("Users with the following data exists:")
+    public void usersWithTheFollowingDataExists(DataTable table) {
+        List<Map<String, String>> rows = table.asMaps(String.class, String.class);
+        rows.forEach(row -> this.bus.dispatch(new CreateUser(row.get("id"), row.get("email"))));
     }
 }
