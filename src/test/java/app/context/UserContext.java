@@ -27,12 +27,12 @@ public class UserContext {
         this.bus = bus;
     }
 
-    @Given("I send a post request to {string} with body:")
-    public void iSendAPostRequestToWith(String path, String body) {
+    @Given("I send a {string} request to {string} with body:")
+    public void iSendAPatchRequestToWith(String method, String path, String body) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(body, headers);
-        this.response = template.postForEntity(path, entity, String.class);
+        this.response = template.exchange(path, HttpMethod.resolve(method.toUpperCase()), entity, String.class);
     }
 
     @Then("the response status should be {int} with body:")

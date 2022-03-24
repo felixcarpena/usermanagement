@@ -39,7 +39,7 @@ public class UserController {
         );
     }
 
-    @PostMapping(path = "/user/{userId}", consumes = "application/json", produces = "application/json")
+    @PatchMapping(path = "/user/{userId}", consumes = "application/json", produces = "application/json")
     public ResponseEntity update(@PathVariable @NotNull String userId, @RequestBody com.fasterxml.jackson.databind.JsonNode payload) {
         String email = payload.get("data").get("email").textValue();
         this.bus.dispatch(new UpdateUserEmail(userId, email));

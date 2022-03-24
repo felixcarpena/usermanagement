@@ -1,6 +1,6 @@
 Feature: User management
   Scenario: Register an user
-    When I send a post request to "/user" with body:
+    When I send a "post" request to "/user" with body:
     """
     {
       "data": {
@@ -22,7 +22,7 @@ Feature: User management
     Given Users with the following data exists:
       | id                                   | email         |
       | 00000000-0000-0000-0000-000000000002 | old@email.com |
-    When I send a post request to "/user/00000000-0000-0000-0000-000000000002" with body:
+    When I send a "patch" request to "/user/00000000-0000-0000-0000-000000000002" with body:
     """
     {
       "data": {

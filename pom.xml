@@ -68,6 +68,11 @@
 			<artifactId>hibernate-types-52</artifactId>
 			<version>2.14.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.13</version>
+		</dependency>
 		<!-- tests -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
