@@ -1,25 +1,21 @@
 package app.context;
 
 import io.cucumber.java.Before;
-import io.cucumber.spring.CucumberContextConfiguration;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@CucumberContextConfiguration
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ContextConfiguration {
+public class DbContext {
     @PersistenceContext
     private final EntityManager em;
     private Logger logger;
 
     @Autowired
-    public ContextConfiguration(EntityManager em, Logger logger) {
+    public DbContext(EntityManager em, Logger logger) {
         this.em = em;
         this.logger = logger;
     }

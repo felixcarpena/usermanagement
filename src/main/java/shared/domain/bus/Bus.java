@@ -4,7 +4,6 @@ import shared.domain.Event;
 
 import java.util.Optional;
 
-
 public interface Bus {
     void subscribe(Handler<Message> handler);
     void dispatch(Event event);
