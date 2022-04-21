@@ -16,7 +16,7 @@ public class InitContainers implements ApplicationContextInitializer<Configurabl
     public void initialize(ConfigurableApplicationContext applicationContext) {
         ConfigurableEnvironment env = applicationContext.getEnvironment();
         String dbName = env.getProperty("db.name");
-        String dbPassword = env.getProperty("db.password");
+        String dbPassword = env.getProperty("spring.datasource.password");
         mysqlContainer = new MySQLContainer<>("mysql:8")
                 .withDatabaseName(dbName)
                 .withPassword(dbPassword);
