@@ -50,4 +50,14 @@ public class UserController {
                 ResponseEntity.notFound().build()
         );
     }
+
+    @GetMapping(path = "/user/{userId}", produces = "application/json")
+    public ResponseEntity info(@PathVariable @NotNull String userId) {
+        Optional<Response> response = this.bus.dispatch(new UserOfId(userId));
+        return response.map(
+                (userOfIdResponse) -> new ResponseEntity<>((UserOfIdResponse) userOfIdResponse, HttpStatus.OK)
+        ).orElse(
+                ResponseEntity.notFound().build()
+        );
+    }
 }

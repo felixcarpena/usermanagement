@@ -80,6 +80,14 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.5.13</version>
 		</dependency>
+
+		<!--Elastic APM -->
+		<dependency>
+			<groupId>co.elastic.apm</groupId>
+			<artifactId>apm-agent-attach</artifactId>
+			<version>1.30.0</version>
+		</dependency>
+
 		<!-- tests -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

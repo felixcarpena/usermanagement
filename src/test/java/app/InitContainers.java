@@ -19,7 +19,8 @@ public class InitContainers implements ApplicationContextInitializer<Configurabl
         String dbPassword = env.getProperty("spring.datasource.password");
         mysqlContainer = new MySQLContainer<>("mysql:8")
                 .withDatabaseName(dbName)
-                .withPassword(dbPassword);
+                .withPassword(dbPassword)
+                .withReuse(true);
 
         mysqlContainer.start();
 
